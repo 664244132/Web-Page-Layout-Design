@@ -340,6 +340,7 @@ h1 em, h2 em {
   position: relative;
   background-position: center;
   background-size: cover;
+  background-image: url("/img/1.jpg");
 }
 
 .image-label {

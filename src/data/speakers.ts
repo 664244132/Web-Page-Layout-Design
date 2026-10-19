@@ -10,17 +10,17 @@ import {
 
 /**
  * แบนเนอร์ภาพรวมขนาดใหญ่ของงานสัมมนา (Section 3)
- * ใช้ภาพ img/6.jpg พร้อม Base64 fallback ที่การันตีการโหลด 100%
+ * ใช้ภาพ img/1.jpg พร้อม Base64 fallback ที่การันตีการโหลด 100%
  */
-export const bannerPhoto: string = image6Base64
+export const bannerPhoto: string = image1Base64
 export const bannerFallbacks: string[] = [
-  image6Base64,
-  "/img/6.jpg",
-  "img/6.jpg",
-  "/src/img/6.jpg",
-  "src/img/6.jpg",
-  "/6.jpg",
-  "6.jpg",
+  image1Base64,
+  "/img/1.jpg",
+  "img/1.jpg",
+  "/src/img/1.jpg",
+  "src/img/1.jpg",
+  "/1.jpg",
+  "1.jpg",
 ]
 
 /**

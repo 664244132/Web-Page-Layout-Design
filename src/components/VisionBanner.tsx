@@ -2,7 +2,7 @@ import { bannerPhoto } from "../data/speakers"
 
 /**
  * คอมโพเนนต์ VisionBanner: ส่วนแสดงภาพใหญ่และวิสัยทัศน์หลัก (Section 3) ตามดีไซน์ webdesign
- * - ใช้ภาพ src/img/6.jpg (bannerPhoto) เป็นภาพพื้นหลังขนาดใหญ่
+ * - ใช้ภาพ src/img/1.jpg (bannerPhoto) เป็นภาพพื้นหลังขนาดใหญ่
  * - แสดงหัวข้อ: "UX/UI 101: THINK LIKE A USER, DESIGN LIKE A PRO"
  * - ลบข้อความบรรยาย, ปุ่ม Discover the lineup และ vision-ticker ออกตาม Requirement ครบถ้วน
  */
