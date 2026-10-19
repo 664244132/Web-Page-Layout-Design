@@ -1,9 +1,14 @@
 import { defineConfig, type HtmlTagDescriptor, type Plugin } from "vite"
 import react from "@vitejs/plugin-react"
 import tailwindcss from "@tailwindcss/vite"
+import fs from "node:fs"
 import path from "node:path"
+import { fileURLToPath } from "node:url"
 
-import siteConfiguration from "./.figma/make/site.json"
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+const siteConfiguration = JSON.parse(
+  fs.readFileSync(path.resolve(__dirname, "./.figma/make/site.json"), "utf-8")
+)
 
 // Vite config — https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
@@ -17,6 +22,7 @@ export default defineConfig(({ mode }) => {
     build: {
       sourcemap: emitSourcemaps ? "inline" : false,
       minify: !emitSourcemaps,
+      chunkSizeWarningLimit: 4000,
     },
     plugins: [
       react(),
@@ -34,7 +40,7 @@ export default defineConfig(({ mode }) => {
     server: {
       host: process.env.FIGMA_DEV_SERVER_HOST || "0.0.0.0",
       port: parseInt(process.env.PORT || "8443"),
-      strictPort: true,
+      strictPort: false,
       watch: {
         ignored: ["**/.figma/**"],
       },

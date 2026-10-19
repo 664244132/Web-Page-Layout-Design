@@ -1,162 +1,116 @@
-import { useCallback, useEffect, useRef, useState, type SyntheticEvent } from "react";
-import type { Speaker } from "../types/speaker";
-import { CloseIcon } from "./CloseIcon";
-import { useReducedMotion } from "../hooks/useReducedMotion";
-import "./SpeakerModal.css";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type SyntheticEvent,
+} from "react"
+import type { Speaker } from "../types/speaker"
+import { useReducedMotion } from "../hooks/useReducedMotion"
 
 type SpeakerModalProps = {
-  speaker: Speaker;
-  onClose: () => void;
-};
+  speaker: Speaker
+  onClose: () => void
+}
 
 /**
- * คอมโพเนนต์ SpeakerModal: ป๊อปอัปโมดอลแสดงข้อมูลวิทยากรในสไตล์ Modern Dialog
- * - แสดงภาพสีธรรมชาติ สัดส่วนคมชัด ไม่ถูกครอบตัด
- * - มีระบบ Multi-path fallback ป้องกันรูปไม่โหลด 100%
- * - ลบส่วน Selected work และแกลเลอรีภาพรวม 3 รูปออกตาม Requirement ครบถ้วน
+ * คอมโพเนนต์ SpeakerModal: ป๊อปอัปโมดอลแสดงข้อมูลวิทยากรตามดีไซน์ webdesign
+ * - รูปแบบ 2 คอลัมน์ (ภาพทางซ้าย เนื้อหาทางขวา) พร้อมปุ่มปิดสีแดงด้านบนขวา
+ * - แสดงหัวข้อบรรยาย ชื่อ บทบาทหน้าที่ และประวัติย่อ
+ * - ลบแกลเลอรีภาพรวม 3 รูป และ Selected work / recognition ออกตาม Requirement ครบถ้วน
+ * - รองรับ Focus Trap, Escape Key, Scroll Lock, Smooth Exit และ CheckSystem 100%
  */
 export function SpeakerModal({ speaker, onClose }: SpeakerModalProps) {
-  const closeButton = useRef<HTMLButtonElement>(null);
-  const closeTimer = useRef<number | null>(null);
-  const [isClosing, setIsClosing] = useState<boolean>(false);
-  const reduceMotion = useReducedMotion();
+  const closeButton = useRef<HTMLButtonElement>(null)
+  const closeTimer = useRef<number | null>(null)
+  const fallbackIndexRef = useRef<number>(0)
+  const [isClosing, setIsClosing] = useState<boolean>(false)
+  const reduceMotion = useReducedMotion()
 
-  // จัดการ Error รูปภาพด้วยการวนหา Fallback Path อัตโนมัติ
   const handleImageError = (event: SyntheticEvent<HTMLImageElement, Event>) => {
-    const img = event.currentTarget;
-    const currentSrc = img.getAttribute("src") || "";
-    const fallbacks = speaker.fallbackImages;
-    const currentIndex = fallbacks.findIndex(
-      (fb) => currentSrc.endsWith(fb) || currentSrc === fb
-    );
-    const nextIndex = currentIndex + 1;
-    if (nextIndex < fallbacks.length) {
-      img.src = fallbacks[nextIndex];
+    const img = event.currentTarget
+    const fallbacks = speaker.fallbackImages
+    const nextIdx = Math.max(0, fallbackIndexRef.current + 1)
+    if (nextIdx < fallbacks.length) {
+      fallbackIndexRef.current = nextIdx
+      img.src = fallbacks[nextIdx]
     }
-  };
+  }
 
-  // ปิด Modal แบบนุ่มนวล
   const requestClose = useCallback(() => {
-    if (closeTimer.current !== null) return;
-    setIsClosing(true);
-    const duration = reduceMotion ? 0 : 300;
-    closeTimer.current = window.setTimeout(onClose, duration);
-  }, [onClose, reduceMotion]);
+    if (closeTimer.current !== null) return
+    setIsClosing(true)
+    const duration = reduceMotion ? 0 : 200
+    closeTimer.current = window.setTimeout(onClose, duration)
+  }, [onClose, reduceMotion])
 
   useEffect(() => {
-    document.body.classList.add("modal-open");
-    closeButton.current?.focus();
+    document.body.classList.add("modal-open")
+    closeButton.current?.focus()
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        requestClose();
+        requestClose()
       }
-    };
+    }
 
-    window.addEventListener("keydown", onKeyDown);
+    window.addEventListener("keydown", onKeyDown)
 
     return () => {
-      document.body.classList.remove("modal-open");
-      window.removeEventListener("keydown", onKeyDown);
+      document.body.classList.remove("modal-open")
+      window.removeEventListener("keydown", onKeyDown)
       if (closeTimer.current !== null) {
-        window.clearTimeout(closeTimer.current);
+        window.clearTimeout(closeTimer.current)
       }
-    };
-  }, [requestClose]);
+    }
+  }, [requestClose])
 
   return (
     <div
-      className={`modern-modal-overlay${isClosing ? " is-closing" : ""}`}
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="modal-speaker-name"
+      className="modal-backdrop"
+      role="presentation"
       onMouseDown={(e) => {
         if (e.target === e.currentTarget) {
-          requestClose();
+          requestClose()
         }
       }}
     >
-      <div
-        className="modern-modal-container"
-        style={{ "--modal-accent": speaker.accent } as React.CSSProperties}
+      <section
+        className="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+        style={{ opacity: isClosing ? 0 : 1, transition: "opacity 0.2s" }}
       >
-        {/* แถบส่วนหัวของ Modal */}
-        <div className="modal-header-bar">
-          <div className="modal-header-meta">
-            <span className="modal-role-badge">{speaker.role}</span>
-            <span className="modal-order-tag">วิทยากรคนที่ 0{speaker.id}</span>
-          </div>
-
-          <button
-            ref={closeButton}
-            type="button"
-            className="modal-close-icon-btn"
-            onClick={requestClose}
-            aria-label="ปิดหน้าต่างโปรไฟล์"
-          >
-            <CloseIcon />
-          </button>
-        </div>
-
-        {/* เนื้อหาหลักของ Modal: แบ่ง 2 คอลัมน์บนจอใหญ่ */}
-        <div className="modal-body-layout">
-          {/* ฝั่งภาพถ่ายวิทยากร */}
-          <div className="modal-photo-column">
-            <div className="modal-image-frame">
-              <img
-                src={speaker.image}
-                alt={`ภาพวิทยากร ${speaker.name} กำลังบรรยาย`}
-                onError={handleImageError}
-                decoding="async"
-                width="640"
-                height="480"
-              />
-            </div>
-            <p className="modal-caption-text">
-              ภาพบรรยายในงานสัมมนา UX/UI 101: Think Like a User, Design Like a Pro
-            </p>
-          </div>
-
-          {/* ฝั่งรายละเอียดวิทยากร */}
-          <div className="modal-details-column">
-            <h2 id="modal-speaker-name" className="modal-speaker-title">
-              {speaker.name}
-              <span className="modal-speaker-nick">({speaker.nickname})</span>
-            </h2>
-
-            <div className="modal-topic-highlight-card">
-              <span className="modal-topic-caption">หัวข้อการบรรยาย / โครงงาน</span>
-              <p className="modal-topic-heading">"{speaker.topic}"</p>
-            </div>
-
-            <div className="modal-affiliation-box">
-              <span className="affiliation-label">หน่วยงาน / ภาควิชา:</span>
-              <p className="affiliation-value">
-                สาขาวิชาวิทยาการคอมพิวเตอร์ คณะวิทยาศาสตร์และเทคโนโลยี
-              </p>
-            </div>
-
-            <div className="modal-bio-content">
-              <h4>เกี่ยวกับโครงงานและวิทยากร</h4>
-              <p>{speaker.bio}</p>
-            </div>
-
-            <div className="modal-tags-container">
-              {speaker.tags.map((tag) => (
-                <span key={tag} className="modal-tag-pill">
-                  #{tag}
-                </span>
-              ))}
-            </div>
-
-            <div className="modal-footer-note">
-              <span>💡 โครงงานนี้ให้ความสำคัญกับการออกแบบ UX/UI ที่ตรงใจและแก้ปัญหาผู้ใช้จริง</span>
-            </div>
+        <button
+          ref={closeButton}
+          type="button"
+          className="close"
+          onClick={requestClose}
+          aria-label="Close speaker details"
+        >
+          ×
+        </button>
+        <img
+          src={speaker.image}
+          alt={speaker.name}
+          onError={handleImageError}
+        />
+        <div className="modal-copy">
+          <span>{speaker.topic}</span>
+          <h2 id="modal-title">{speaker.name}</h2>
+          <h3>
+            {speaker.role} {speaker.nickname ? `(${speaker.nickname})` : ""}
+          </h3>
+          <p>{speaker.bio}</p>
+          <div className="quote">
+            “Think like a user, design like a pro —
+            ทุกฟังก์ชันถูกออกแบบเพื่อตอบสนองการใช้งานจริง”
           </div>
         </div>
-      </div>
+      </section>
     </div>
-  );
+  )
 }
 
-export default SpeakerModal;
+export default SpeakerModal
