@@ -1,64 +1,125 @@
-import type { Speaker } from "../types/speaker"
-import speakerImg1 from "../img/5.jpg"
-import speakerImg2 from "../img/4.jpg"
-import speakerImg3 from "../img/3.jpg"
-import speakerImg4 from "../img/2.jpg"
-import speakerImg5 from "../img/1.jpg"
-import bannerImg from "../img/6.jpg"
+import type { Speaker } from "../types/speaker";
+import speakerImg1 from "../img/5.jpg";
+import speakerImg2 from "../img/4.jpg";
+import speakerImg3 from "../img/3.jpg";
+import speakerImg4 from "../img/2.jpg";
+import speakerImg5 from "../img/1.jpg";
+import bannerImg from "../img/6.jpg";
 
-export const photos: string[] = [
-  speakerImg1,
-  speakerImg2,
-  speakerImg3,
-  speakerImg4,
-  speakerImg5,
-  bannerImg,
-]
+export const bannerPhoto: string = bannerImg;
+export const bannerFallbacks: string[] = [
+  "/src/img/6.jpg",
+  "src/img/6.jpg",
+  "/img/6.jpg",
+  "img/6.jpg",
+  "/6.jpg",
+  "6.jpg",
+];
 
 export const speakers: Speaker[] = [
   {
+    id: 1,
     name: "นาย พงศกร บุษษะ",
+    nickname: "เปา",
     role: "วิทยากร",
     topic: "ระบบร้านค้าชุมชนข้างทางด้วยระบบเเผนที่",
     image: speakerImg1,
-    bio: "นักศึกษาวิทยาการคอมพิวเตอร์ชั้นปีที่ 4 ผู้พัฒนาและออกแบบระบบร้านค้าชุมชนข้างทางด้วยระบบแผนที่ เพื่อยกระดับเศรษฐกิจชุมชนและการค้นหาร้านค้าท้องถิ่น",
+    imageNum: 5,
+    fallbackImages: [
+      "/src/img/5.jpg",
+      "src/img/5.jpg",
+      "/img/5.jpg",
+      "img/5.jpg",
+      "/5.jpg",
+      "5.jpg",
+    ],
+    bio: "นักศึกษาสาขาวิชาวิทยาการคอมพิวเตอร์ ชั้นปีที่ 4 ผู้พัฒนาและออกแบบระบบร้านค้าชุมชนข้างทางด้วยระบบแผนที่ (Khang Tang Maps) เพื่อยกระดับเศรษฐกิจชุมชนและการค้นหาร้านค้าท้องถิ่นผ่านเทคโนโลยีดิจิทัล",
     work: [],
-    accent: "#ff5c35",
+    accent: "#38bdf8",
+    tags: ["Map System", "Community Tech", "UX Research"],
   },
   {
+    id: 2,
     name: "นาย ภูริเดช ตะโกมา",
+    nickname: "ภู",
     role: "วิทยากร",
     topic: "การพัฒนาระบบจำหน่ายมือถือออนไลน์",
     image: speakerImg2,
-    bio: "นักศึกษาวิทยาการคอมพิวเตอร์ชั้นปีที่ 4 ผู้เชี่ยวชาญการออกแบบและพัฒนาระบบพาณิชย์อิเล็กทรอนิกส์สำหรับจำหน่ายมือถือออนไลน์",
+    imageNum: 4,
+    fallbackImages: [
+      "/src/img/4.jpg",
+      "src/img/4.jpg",
+      "/img/4.jpg",
+      "img/4.jpg",
+      "/4.jpg",
+      "4.jpg",
+    ],
+    bio: "นักศึกษาสาขาวิชาวิทยาการคอมพิวเตอร์ ชั้นปีที่ 4 ผู้เชี่ยวชาญการออกแบบและพัฒนาระบบพาณิชย์อิเล็กทรอนิกส์ (E-Commerce) สำหรับจำหน่ายมือถือออนไลน์ เน้นการตอบสนองที่รวดเร็วและการสั่งซื้อที่ง่ายดาย",
     work: [],
-    accent: "#c8ff62",
+    accent: "#818cf8",
+    tags: ["E-Commerce", "Full Stack", "Mobile Store"],
   },
   {
+    id: 3,
     name: "นาย กมลภพ อร่ามรักษ์",
+    nickname: "ภพ",
     role: "วิทยากร",
     topic: "ระบบคำนวณค่าเเรงคนงานมะพร้าว",
     image: speakerImg3,
-    bio: "นักศึกษาวิทยาการคอมพิวเตอร์ชั้นปีที่ 4 ผู้พัฒนานวัตกรรมระบบคำนวณค่าแรงคนงานสวนมะพร้าว ช่วยเพิ่มความแม่นยำและโปร่งใสในการบริหารจัดการการเกษตร",
+    imageNum: 3,
+    fallbackImages: [
+      "/src/img/3.jpg",
+      "src/img/3.jpg",
+      "/img/3.jpg",
+      "img/3.jpg",
+      "/3.jpg",
+      "3.jpg",
+    ],
+    bio: "นักศึกษาสาขาวิชาวิทยาการคอมพิวเตอร์ ชั้นปีที่ 4 ผู้พัฒนานวัตกรรมเว็บแอปพลิเคชันคิดคำนวณรายได้และค่าแรงคนงานสวนมะพร้าว ช่วยเพิ่มความแม่นยำ โปร่งใส และลดความซ้ำซ้อนในการบริหารงานเกษตรกรรม",
     work: [],
-    accent: "#b69cff",
+    accent: "#34d399",
+    tags: ["Web Application", "AgriTech", "Calculation System"],
   },
   {
+    id: 4,
     name: "นาย จักรกฤษณ์ นาคสุก",
+    nickname: "เกม",
     role: "วิทยากร",
     topic: "ระบบบริการเช่ารถออนไลน์",
     image: speakerImg4,
-    bio: "นักศึกษาวิทยาการคอมพิวเตอร์ชั้นปีที่ 4 ผู้สร้างสรรค์แพลตฟอร์มระบบบริการเช่ารถออนไลน์ เพื่อประสบการณ์การเดินทางที่สะดวก ปลอดภัย และไร้รอยต่อ",
+    imageNum: 2,
+    fallbackImages: [
+      "/src/img/2.jpg",
+      "src/img/2.jpg",
+      "/img/2.jpg",
+      "img/2.jpg",
+      "/2.jpg",
+      "2.jpg",
+    ],
+    bio: "นักศึกษาสาขาวิชาวิทยาการคอมพิวเตอร์ ชั้นปีที่ 4 ผู้สร้างสรรค์แพลตฟอร์มระบบบริการเช่ารถออนไลน์ เพื่อประสบการณ์การเดินทางที่สะดวกสบาย ปลอดภัย ตรวจสอบสถานะรถและจองคิวได้อย่างไร้รอยต่อ",
     work: [],
-    accent: "#73cfff",
+    accent: "#f472b6",
+    tags: ["Rental System", "Booking UX", "Web Platform"],
   },
   {
+    id: 5,
     name: "นางสาว ณฐกร เจะรัมย์",
+    nickname: "กิ๊ฟ",
     role: "วิทยากร",
     topic: "ระบบจัดการร้านอาหารสำหรับเจ้าของร้านรายเดี่ยว",
     image: speakerImg5,
-    bio: "นักศึกษาวิทยาการคอมพิวเตอร์ชั้นปีที่ 4 ผู้วิจัยและพัฒนาระบบจัดการร้านอาหารที่ตอบโจทย์เจ้าของร้านรายเดี่ยวได้อย่างคล่องตัวและมีประสิทธิภาพสูงสุด",
+    imageNum: 1,
+    fallbackImages: [
+      "/src/img/1.jpg",
+      "src/img/1.jpg",
+      "/img/1.jpg",
+      "img/1.jpg",
+      "/1.jpg",
+      "1.jpg",
+    ],
+    bio: "นักศึกษาสาขาวิชาวิทยาการคอมพิวเตอร์ ชั้นปีที่ 4 ผู้วิจัยและพัฒนาระบบจัดการร้านอาหารที่ปรับแต่งเป็นพิเศษสำหรับเจ้าของร้านรายเดี่ยว ช่วยลดเวลาสั่งอาหาร จัดการสต็อก และออกบิลได้อย่างมีประสิทธิภาพ",
     work: [],
-    accent: "#ffd166",
+    accent: "#fbbf24",
+    tags: ["Restaurant POS", "Single Owner UX", "Workflow Design"],
   },
-]
+];

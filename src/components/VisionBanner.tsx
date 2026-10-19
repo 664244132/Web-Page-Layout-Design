@@ -1,92 +1,64 @@
-import { useEffect, useRef } from "react"
-import bannerImg from "../img/6.jpg"
-import { useReducedMotion } from "../hooks/useReducedMotion"
-import "./VisionBanner.css"
+import { useState, type SyntheticEvent } from "react";
+import { bannerPhoto, bannerFallbacks } from "../data/speakers";
+import "./VisionBanner.css";
 
 /**
- * คอมโพเนนต์ VisionBanner: แบนเนอร์ภาพใหญ่ของงาน
- * รองรับ Parallax Scroll, ภาพ 6.jpg และหัวข้อ UX/UI 101 ตาม Requirement
- * (ลบ vision-ticker, ข้อความบรรยาย และปุ่ม Discover the lineup ออกเรียบร้อย)
+ * คอมโพเนนต์ VisionBanner: แบนเนอร์ภาพใหญ่ของงานสัมมนา
+ * - ใช้ภาพ src/img/6.jpg ซึ่งเป็นภาพถ่ายบนเวทีสัมมนาจริงของทีมงาน
+ * - แสดงหัวข้อ "UX/UI 101: THINK LIKE A USER, DESIGN LIKE A PRO"
+ * - ลบ vision-ticker, ข้อความบรรยาย และปุ่ม Discover the lineup ออกเรียบร้อยตาม Requirement
  */
 export function VisionBanner() {
-  const sectionRef = useRef<HTMLElement>(null)
-  const imageRef = useRef<HTMLImageElement>(null)
-  const parallaxFrame = useRef<number>(0)
-  const reduceMotion = useReducedMotion()
+  const [imgSrc, setImgSrc] = useState<string>(bannerPhoto);
 
-  useEffect(() => {
-    const section = sectionRef.current
-    const image = imageRef.current
-
-    // Guard Clause: ออกทันทีหาก Element ยังไม่ถูกเมานต์ลง DOM
-    if (!section || !image) return
-
-    // ตรวจจับเมื่อผู้ใช้เลื่อนหน้าจอมาถึงแบนเนอร์อย่างน้อย 28%
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          section.classList.add("is-visible")
-          observer.unobserve(section)
-        }
-      },
-      { threshold: 0.28 },
-    )
-
-    const updateParallax = () => {
-      cancelAnimationFrame(parallaxFrame.current)
-      parallaxFrame.current = requestAnimationFrame(() => {
-        const bounds = section.getBoundingClientRect()
-        const progress =
-          (window.innerHeight - bounds.top) /
-          (window.innerHeight + bounds.height)
-        image.style.setProperty("--parallax-y", `${(progress - 0.5) * 90}px`)
-      })
+  const handleImageError = (event: SyntheticEvent<HTMLImageElement, Event>) => {
+    const currentSrc = event.currentTarget.getAttribute("src") || "";
+    const currentIndex = bannerFallbacks.findIndex(
+      (fb) => currentSrc.endsWith(fb) || currentSrc === fb
+    );
+    const nextIndex = currentIndex + 1;
+    if (nextIndex < bannerFallbacks.length) {
+      setImgSrc(bannerFallbacks[nextIndex]);
     }
-
-    observer.observe(section)
-
-    // ทำงาน Parallax เฉพาะเมื่อผู้ใช้ไม่ได้เปิดโหมดลดการเคลื่อนไหว
-    if (!reduceMotion) {
-      window.addEventListener("scroll", updateParallax, { passive: true })
-      updateParallax()
-    }
-
-    return () => {
-      observer.disconnect()
-      window.removeEventListener("scroll", updateParallax)
-      cancelAnimationFrame(parallaxFrame.current)
-    }
-  }, [reduceMotion])
+  };
 
   return (
-    <section
-      ref={sectionRef}
-      className="vision-banner"
-      aria-labelledby="vision-title"
-    >
-      <img
-        ref={imageRef}
-        className="vision-image"
-        src={bannerImg}
-        alt=""
-        aria-hidden="true"
-        loading="lazy"
-        decoding="async"
-        width="1440"
-        height="700"
-      />
-      <div className="vision-shade" />
-      <div className="vision-sweep" />
+    <section className="modern-vision-section" aria-labelledby="vision-section-title">
+      <div className="vision-banner-frame">
+        {/* รูปภาพใหญ่ของงานสัมมนา (6.jpg) */}
+        <img
+          className="vision-banner-bg"
+          src={imgSrc}
+          alt="บรรยากาศงานสัมมนา UX/UI 101: Think Like a User, Design Like a Pro"
+          onError={handleImageError}
+          loading="lazy"
+          decoding="async"
+          width="1600"
+          height="900"
+        />
 
-      <div className="vision-content">
-        <h2 id="vision-title">
-          UX/UI 101:
-          <br />
-          <em>THINK LIKE A USER, DESIGN LIKE A PRO</em>
-        </h2>
+        {/* เลเยอร์ Gradient Overlay ให้ตัวอักษรคมชัดและมีมิติ */}
+        <div className="vision-gradient-overlay" />
+
+        {/* เนื้อหาข้อความบนแบนเนอร์ */}
+        <div className="vision-text-container">
+          <div className="vision-pill-badge">
+            <span>SEMINAR VISION & PHILOSOPHY</span>
+          </div>
+
+          <h2 id="vision-section-title" className="vision-main-heading">
+            UX/UI 101:
+            <span className="vision-sub-accent">THINK LIKE A USER, DESIGN LIKE A PRO</span>
+          </h2>
+
+          <p className="vision-quote-summary">
+            "การออกแบบประสบการณ์และหน้าจอที่ดี ไม่ได้เริ่มต้นจากความสวยงามเพียงอย่างเดียว
+            แต่เริ่มต้นจากการเข้าใจความต้องการและพฤติกรรมที่แท้จริงของผู้ใช้งาน"
+          </p>
+        </div>
       </div>
     </section>
-  )
+  );
 }
 
-export default VisionBanner
+export default VisionBanner;

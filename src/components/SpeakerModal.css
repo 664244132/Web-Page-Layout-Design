@@ -1,183 +1,308 @@
-/* Speaker Detail Pop-up Modal */
-.modal-shell {
+/* ==============================================================================
+   Modern Speaker Modal Styles
+   ดีไซน์หน้าต่าง Pop-up Modal สไตล์ Modern Centered Dialog
+   ============================================================================== */
+
+.modern-modal-overlay {
   position: fixed;
   inset: 0;
-  z-index: 20;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.modal-backdrop {
-  position: absolute;
-  inset: 0;
-  border: 0;
-  background: #000b;
-  backdrop-filter: blur(12px);
-  animation: fade-in 0.5s both;
-  cursor: default;
-}
-
-.modal-panel {
-  --accent: #ff5c35;
-  width: min(1050px, 94vw);
-  height: 100%;
-  overflow-y: auto;
-  position: relative;
-  z-index: 1;
-  background: #f1efe8;
-  color: #101010;
-  padding: 34px clamp(24px, 5vw, 70px) 70px;
-  box-shadow: -30px 0 100px #000a;
-  animation: panel-in 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-.modal-shell.is-closing {
-  pointer-events: none;
-}
-
-.modal-shell.is-closing .modal-backdrop {
-  animation: fade-out 0.6s ease both;
-}
-
-.modal-shell.is-closing .modal-panel {
-  animation: panel-out 0.62s cubic-bezier(0.7, 0, 0.84, 0) both;
-}
-
-.modal-panel::before {
-  content: "";
-  display: block;
-  position: absolute;
-  inset: 0 0 auto;
-  height: 5px;
-  background: var(--accent);
-  transform-origin: left;
-  animation: grow-x 1s 0.45s both;
-}
-
-.close-button {
-  margin-left: auto;
-  border: 0;
-  background: transparent;
+  z-index: 50;
   display: flex;
   align-items: center;
-  gap: 13px;
-  cursor: pointer;
-  text-transform: uppercase;
-  font-size: 10px;
-  letter-spacing: 0.12em;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(11, 15, 25, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  animation: modal-fade-in 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-.close-button b {
-  display: grid;
-  place-items: center;
-  width: 38px;
-  height: 38px;
-  border: 1px solid #bbb;
-  border-radius: 50%;
-  transition: rotate 0.4s, background 0.3s;
+.modern-modal-overlay.is-closing {
+  pointer-events: none;
+  animation: modal-fade-out 0.25s ease both;
 }
 
-.close-button:hover b {
-  rotate: 90deg;
-  background: var(--accent);
-  border-color: var(--accent);
-}
-
-.modal-hero {
-  display: grid;
-  grid-template-columns: 1.05fr 0.85fr;
-  gap: clamp(30px, 6vw, 80px);
-  align-items: end;
-  margin-top: 45px;
-}
-
-.modal-copy {
-  animation: reveal-up 0.75s 0.18s both;
-}
-
-.modal-copy h2 {
-  margin: 30px 0 8px;
-  font: 600 clamp(2.4rem, 5vw, 4.5rem)/0.95 "Manrope";
-  letter-spacing: -0.05em;
-}
-
-.modal-topic {
-  margin: 0;
-  color: #555;
-  font: 500 18px "Manrope";
-}
-
-.bio {
-  margin: 30px 0 0;
-  max-width: 520px;
-  font-size: 15px;
-  line-height: 1.7;
-  color: #444;
-}
-
-.hero-image {
-  margin: 0;
-  animation: image-in 0.9s 0.12s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-.hero-image img {
-  height: min(65vh, 600px);
+.modern-modal-container {
+  --modal-accent: #38bdf8;
+  position: relative;
   width: 100%;
-  object-fit: cover;
-  border-radius: 4px;
+  max-width: 960px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+  padding: 32px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(56, 189, 248, 0.12);
+  animation: modal-scale-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-.hero-image figcaption {
-  margin-top: 10px;
+.modern-modal-overlay.is-closing .modern-modal-container {
+  animation: modal-scale-out 0.25s ease both;
+}
+
+/* ส่วนหัว Modal */
+.modal-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 24px;
+}
+
+.modal-header-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.modal-role-badge {
   font-size: 11px;
-  letter-spacing: 0.14em;
+  font-weight: 700;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.15);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  padding: 4px 12px;
+  border-radius: 9999px;
+  letter-spacing: 0.04em;
+}
+
+.modal-order-tag {
+  font-size: 12px;
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+.modal-close-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #f1f5f9;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modal-close-icon-btn:hover {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: rgba(239, 68, 68, 0.5);
+  color: #f87171;
+  transform: rotate(90deg);
+}
+
+/* ผังเลย์เอาต์หลักใน Modal */
+.modal-body-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 32px;
+  align-items: start;
+}
+
+/* ฝั่งรูปภาพ */
+.modal-photo-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-image-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #0b0f19;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-image-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+}
+
+.modal-caption-text {
+  margin: 10px 0 0;
+  font-size: 11px;
+  color: #64748b;
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* ฝั่งรายละเอียด */
+.modal-details-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-speaker-title {
+  margin: 0 0 16px;
+  font-family: "Manrope", sans-serif;
+  font-size: clamp(22px, 3.5vw, 28px);
+  font-weight: 800;
+  color: #f8fafc;
+  letter-spacing: -0.02em;
+}
+
+.modal-speaker-nick {
+  font-size: 18px;
+  font-weight: 500;
+  color: #94a3b8;
+  margin-left: 8px;
+}
+
+.modal-topic-highlight-card {
+  background: rgba(15, 23, 42, 0.7);
+  border-left: 4px solid var(--modal-accent);
+  padding: 14px 18px;
+  border-radius: 0 12px 12px 0;
+  margin-bottom: 18px;
+}
+
+.modal-topic-caption {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
   text-transform: uppercase;
-  color: #666;
+  color: #64748b;
+  letter-spacing: 0.08em;
+  margin-bottom: 4px;
 }
 
-@media (max-width: 1024px) {
-  .modal-panel {
-    width: min(860px, 95vw);
-    padding: 28px clamp(20px, 4vw, 45px) 50px;
+.modal-topic-heading {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: #f1f5f9;
+  line-height: 1.45;
+}
+
+.modal-affiliation-box {
+  margin-bottom: 18px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.affiliation-label {
+  display: block;
+  font-size: 11px;
+  color: #64748b;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.affiliation-value {
+  margin: 0;
+  font-size: 13px;
+  color: #cbd5e1;
+  font-weight: 500;
+}
+
+.modal-bio-content {
+  margin-bottom: 20px;
+}
+
+.modal-bio-content h4 {
+  margin: 0 0 6px;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #94a3b8;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+}
+
+.modal-bio-content p {
+  margin: 0;
+  font-size: 14px;
+  color: #cbd5e1;
+  line-height: 1.65;
+}
+
+.modal-tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.modal-tag-pill {
+  font-size: 11.5px;
+  color: #94a3b8;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 3px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.modal-footer-note {
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 12px;
+  color: #64748b;
+  font-style: italic;
+}
+
+/* แอนิเมชันสำหรับ Modal */
+@keyframes modal-fade-in {
+  from {
+    opacity: 0;
   }
-  .modal-hero {
-    gap: 30px;
-  }
-  .modal-copy h2 {
-    font-size: clamp(2.2rem, 5vw, 3.8rem);
+  to {
+    opacity: 1;
   }
 }
 
-@media (max-width: 760px) {
-  .modal-panel {
-    width: 100%;
-    padding: 22px 5vw 60px;
+@keyframes modal-fade-out {
+  from {
+    opacity: 1;
   }
-  .modal-hero {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes modal-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes modal-scale-out {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.96) translateY(10px);
+  }
+}
+
+/* Responsive สำหรับแท็บเล็ตและมือถือ */
+@media (max-width: 768px) {
+  .modern-modal-container {
+    padding: 22px;
+    border-radius: 18px;
+    max-height: 94vh;
+  }
+  .modal-body-layout {
     grid-template-columns: 1fr;
-    margin-top: 20px;
     gap: 20px;
   }
-  .modal-copy h2 {
-    font-size: clamp(1.8rem, 7vw, 2.6rem);
-    line-height: 1.1;
-    margin: 15px 0 8px;
-  }
-  .modal-topic {
-    font-size: 15px;
-  }
-  .bio {
-    margin-top: 20px;
-    font-size: 14px;
-    line-height: 1.6;
-  }
-  .hero-image {
-    grid-row: 1;
-    margin-top: 10px;
-  }
-  .hero-image img {
-    height: 38vh;
-    width: 100%;
-    border-radius: 6px;
+  .modal-speaker-title {
+    font-size: 20px;
   }
 }

@@ -1,125 +1,106 @@
-/* Vision Banner Section */
-.vision-banner {
-  width: 100vw;
-  min-height: min(85vh, 850px);
+/* ==============================================================================
+   Modern Vision Banner Styles
+   แบนเนอร์ภาพใหญ่แนว Cinematic Tech สะท้อนบรรยากาศงานจริง
+   ============================================================================== */
+
+.modern-vision-section {
+  max-width: 1400px;
+  margin: 40px auto 100px;
+  padding: 0 4vw;
+}
+
+.vision-banner-frame {
   position: relative;
-  isolation: isolate;
+  width: 100%;
+  min-height: 520px;
+  border-radius: 28px;
+  overflow: hidden;
   display: flex;
   align-items: flex-end;
-  overflow: hidden;
-  background: #111;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), 0 0 50px rgba(99, 102, 241, 0.15);
 }
 
-.vision-image {
-  --parallax-y: 0px;
+.vision-banner-bg {
   position: absolute;
-  z-index: -3;
-  inset: -12% 0;
+  inset: 0;
   width: 100%;
-  height: 124%;
+  height: 100%;
   object-fit: cover;
-  object-position: center;
-  filter: saturate(0.7) contrast(1.08);
-  transform: translate3d(0, var(--parallax-y), 0) scale(1.05);
-  will-change: transform;
+  object-position: center 35%;
+  filter: brightness(0.85) contrast(1.05);
+  transition: transform 0.8s ease;
 }
 
-.vision-shade {
+.vision-banner-frame:hover .vision-banner-bg {
+  transform: scale(1.02);
+}
+
+.vision-gradient-overlay {
   position: absolute;
-  z-index: -2;
   inset: 0;
   background:
-    linear-gradient(90deg, #050505e8 0%, #070707b0 50%, #05050560 100%),
-    linear-gradient(0deg, #050505dc 0%, transparent 65%);
+    linear-gradient(180deg, rgba(15, 23, 42, 0.3) 0%, rgba(11, 15, 25, 0.92) 85%),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.85) 0%, transparent 60%);
+  pointer-events: none;
 }
 
-.vision-sweep {
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  width: 38%;
-  left: -50%;
-  background: linear-gradient(100deg, transparent, #ffffff1b, transparent);
-  transform: skewX(-12deg);
-  animation: light-sweep 8s 1s ease-in-out infinite;
+.vision-text-container {
+  position: relative;
+  z-index: 2;
+  padding: clamp(35px, 6vw, 65px);
+  max-width: 850px;
 }
 
-.vision-banner::after {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  opacity: 0.16;
-  background: linear-gradient(110deg, transparent 38%, #ff5c35 100%);
+.vision-pill-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.15);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  padding: 5px 14px;
+  border-radius: 9999px;
+  margin-bottom: 18px;
 }
 
-.vision-content {
-  width: 100%;
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 14vh 4vw 12vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.vision-content h2 {
-  margin: 0;
-  font: 500 clamp(3.2rem, 7.5vw, 7.8rem)/0.92 "Manrope";
-  letter-spacing: -0.065em;
-  color: #f4f2eb;
-  opacity: 0;
-  transform: translateY(60px);
-  transition: opacity 1s 0.18s, transform 1s 0.18s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.vision-content h2 em {
-  display: block;
-  margin-top: 10px;
-  color: transparent;
-  -webkit-text-stroke: 1.2px #f4f2eb;
-  font-style: normal;
-  font-size: clamp(2.2rem, 5.5vw, 5.2rem);
+.vision-main-heading {
+  margin: 0 0 16px;
+  font-family: "Manrope", sans-serif;
+  font-size: clamp(2.4rem, 5.5vw, 4.4rem);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.05;
   letter-spacing: -0.04em;
 }
 
-.vision-banner.is-visible .vision-content h2 {
-  opacity: 1;
-  transform: translateY(0);
+.vision-sub-accent {
+  display: block;
+  margin-top: 8px;
+  font-size: clamp(1.4rem, 3.2vw, 2.4rem);
+  font-weight: 700;
+  background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.02em;
 }
 
-@media (max-width: 1024px) {
-  .vision-banner {
-    min-height: 60vh;
-  }
-  .vision-content {
-    padding: 10vh 5vw 8vh;
-  }
-  .vision-content h2 {
-    font-size: clamp(2.6rem, 6.5vw, 4.8rem);
-  }
-  .vision-content h2 em {
-    font-size: clamp(1.8rem, 4.5vw, 3.4rem);
-  }
+.vision-quote-summary {
+  margin: 0;
+  font-size: clamp(13.5px, 1.8vw, 16px);
+  color: #cbd5e1;
+  line-height: 1.65;
+  max-width: 680px;
+  font-style: italic;
 }
 
-@media (max-width: 760px) {
-  .vision-banner {
-    min-height: 52vh;
+@media (max-width: 768px) {
+  .vision-banner-frame {
+    min-height: 420px;
+    border-radius: 20px;
   }
-  .vision-content {
-    padding: 70px 5vw 50px;
-  }
-  .vision-content h2 {
-    font-size: clamp(2rem, 8.5vw, 3.2rem);
-    line-height: 1.05;
-    letter-spacing: -0.04em;
-  }
-  .vision-content h2 em {
-    margin-top: 8px;
-    font-size: clamp(1.4rem, 6vw, 2.2rem);
-  }
-  .vision-image {
-    inset: -5% 0;
-    height: 110%;
+  .vision-text-container {
+    padding: 28px 20px;
   }
 }
