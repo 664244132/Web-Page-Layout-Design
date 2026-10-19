@@ -1,0 +1,253 @@
+/* Ambient Glow Backgrounds */
+.ambient {
+  position: fixed;
+  width: 40rem;
+  height: 40rem;
+  border-radius: 50%;
+  filter: blur(130px);
+  opacity: 0.11;
+  pointer-events: none;
+  animation: drift 13s ease-in-out infinite alternate;
+}
+
+.ambient-one {
+  background: #ff603d;
+  top: -20rem;
+  right: -12rem;
+}
+
+.ambient-two {
+  background: #7660ff;
+  left: -25rem;
+  top: 45vh;
+  animation-delay: -7s;
+}
+
+/* Hero Intro Section */
+.intro {
+  max-width: 1440px;
+  margin: auto;
+  min-height: 85vh;
+  position: relative;
+  padding: 12vh 4vw 7vh;
+}
+
+.edition {
+  position: absolute;
+  right: 4vw;
+  top: 13vh;
+  color: #aaa8a2;
+  text-transform: uppercase;
+  line-height: 1.6;
+  font-size: 11px;
+  letter-spacing: 0.13em;
+  animation: reveal 0.9s 0.35s both;
+}
+
+.intro h1 {
+  margin: 0;
+  max-width: 1100px;
+  font: 500 clamp(3.8rem, 9.5vw, 9.2rem)/0.88 "Manrope";
+  letter-spacing: -0.065em;
+}
+
+.intro h1 span {
+  display: block;
+  animation: title-in 1.05s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.intro h1 span:nth-child(2) {
+  animation-delay: 0.12s;
+}
+
+.intro h1 span:nth-child(3) {
+  animation-delay: 0.24s;
+}
+
+.intro h1 .outline {
+  color: transparent;
+  -webkit-text-stroke: 1px #f4f2eb;
+  margin-left: 17%;
+  background: linear-gradient(100deg, transparent 25%, #f4f2eb 48%, transparent 70%);
+  background-size: 220% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: title-in 1.05s 0.12s cubic-bezier(0.16, 1, 0.3, 1) both, text-glint 6s 1.4s ease-in-out infinite;
+}
+
+.lede {
+  width: min(420px, 85vw);
+  margin: 55px 0 0 51%;
+  color: #aaa8a2;
+  font-size: 16px;
+  line-height: 1.65;
+  animation: reveal 0.8s 0.7s both;
+}
+
+/* Hero Action Group & Buttons */
+.hero-action-group {
+  margin: 45px 0 0 51%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  animation: reveal 0.85s 0.85s both;
+}
+
+.secondary-hero-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.6rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #f4f2eb;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.secondary-hero-button:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: translateY(-2px);
+  color: #ffffff;
+}
+
+/* E-Report Entry Button in Hero */
+.ereport-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1.85rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, rgba(255, 96, 61, 0.95) 0%, rgba(118, 96, 255, 0.95) 100%);
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(255, 96, 61, 0.35);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.ereport-button:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 30px rgba(118, 96, 255, 0.5);
+  background: linear-gradient(135deg, #ff603d 0%, #7660ff 100%);
+  color: #ffffff;
+}
+
+.ereport-button svg {
+  transition: transform 0.25s ease;
+}
+
+.ereport-button:hover svg {
+  transform: translateX(4px);
+}
+
+.scroll-cue {
+  position: absolute;
+  left: 4vw;
+  bottom: 7vh;
+  color: #777;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 10px;
+}
+
+.scroll-cue span {
+  display: inline-block;
+  width: 48px;
+  height: 1px;
+  vertical-align: middle;
+  background: #555;
+  margin-right: 14px;
+  overflow: hidden;
+}
+
+/* Footer */
+footer {
+  max-width: 1325px;
+  margin: auto;
+  padding: 35px 4vw 45px;
+  border-top: 1px solid #ffffff28;
+  display: flex;
+  justify-content: space-between;
+  color: #777;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+}
+
+@media (max-width: 1024px) {
+  .intro {
+    min-height: auto;
+    padding: clamp(50px, 8vh, 90px) 4vw 50px;
+  }
+  .edition {
+    position: static;
+    margin-bottom: 2rem;
+  }
+  .lede {
+    margin: 32px 0 0 0;
+    max-width: 620px;
+    width: 100%;
+  }
+  .hero-action-group {
+    margin: 28px 0 0 0;
+  }
+  .scroll-cue {
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .intro {
+    padding: 40px 5vw 45px;
+  }
+  .edition {
+    margin-bottom: 1.25rem;
+    font-size: 10px;
+  }
+  .intro h1 {
+    font-size: clamp(2.6rem, 12vw, 4.2rem);
+    letter-spacing: -0.04em;
+    line-height: 1;
+  }
+  .intro h1 .outline {
+    margin-left: 0;
+    -webkit-text-stroke: 0.75px #f4f2eb;
+  }
+  .lede {
+    margin: 22px 0 0 0;
+    font-size: 14.5px;
+    line-height: 1.6;
+  }
+  .hero-action-group {
+    margin: 24px 0 0 0;
+    gap: 0.75rem;
+  }
+  footer {
+    margin: 0 4vw;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-action-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .ereport-button,
+  .secondary-hero-button {
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    padding: 0.9rem 1.4rem;
+  }
+}

@@ -1,0 +1,1071 @@
+/* ==============================================================================
+   E-Report Page Stylesheet (Editorial & Analytics Theme - Fully Responsive)
+   ============================================================================== */
+
+.report-page {
+  background: #e8e4da;
+  color: #111111;
+  min-height: 100vh;
+  font-family: "DM Sans", sans-serif;
+  overflow-x: hidden;
+}
+
+/* Navigation Return Bars */
+.report-top-bar {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 3vh 4vw 0;
+}
+
+.report-bottom-bar {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 5vh 4vw 8vh;
+  text-align: center;
+}
+
+.report-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  background: #111111;
+  color: #f4f2eb;
+  font: 600 13px "Manrope", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  border-radius: 9999px;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.report-back-btn:hover {
+  background: #ff5c35;
+  color: #111111;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(255, 92, 53, 0.25);
+}
+
+/* Hero Section */
+.report-hero {
+  min-height: 60vh;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 5vh 4vw 4vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.report-overline {
+  margin: 0 0 3vh;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #666;
+}
+
+.report-hero h1 {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font: 600 clamp(2.4rem, 7.5vw, 7rem) / 0.92 "Manrope", sans-serif;
+  letter-spacing: -0.06em;
+  max-width: 950px;
+}
+
+.report-hero h1 span {
+  display: block;
+}
+
+.report-hero h1 span:nth-child(2) {
+  margin-left: clamp(0%, 3vw, 6%);
+}
+
+.report-hero h1 .outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px #111111;
+}
+
+.report-meta {
+  position: relative;
+  z-index: 1;
+  margin-top: 3.5vh;
+  max-width: 540px;
+}
+
+.report-meta p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #444;
+  margin: 0 0 12px;
+}
+
+.report-meta span {
+  display: inline-block;
+  padding-top: 8px;
+  border-top: 1px solid rgba(17, 17, 17, 0.18);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #666;
+}
+
+/* Floating Cover Badge */
+.report-cover {
+  position: absolute;
+  right: 5%;
+  top: 10%;
+  width: min(22vw, 260px);
+  aspect-ratio: 0.74;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #ff5c35;
+  color: #111111;
+  transform: rotate(6deg);
+  box-shadow: 0 25px 60px rgba(42, 30, 22, 0.16);
+  border-radius: 4px;
+}
+
+.report-cover span {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.report-cover strong {
+  font: 600 clamp(2.6rem, 5vw, 4.2rem) / 0.9 "Manrope", sans-serif;
+  letter-spacing: -0.06em;
+}
+
+.report-cover small {
+  font-size: 11px;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+/* Executive KPI Grid Section */
+.report-kpi-section {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 4vw 3vh;
+}
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+.kpi-card {
+  background: #f4f2eb;
+  padding: 24px;
+  border-radius: 8px;
+  border: 1px solid rgba(17, 17, 17, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 150px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.kpi-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.08);
+}
+
+.kpi-card.highlight {
+  background: #111111;
+  color: #f4f2eb;
+  border: none;
+}
+
+.kpi-card.highlight .kpi-label,
+.kpi-card.highlight .kpi-desc {
+  color: #aaa8a2;
+}
+
+.kpi-label {
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #666;
+  font-weight: 500;
+}
+
+.kpi-value {
+  font: 600 clamp(2rem, 3.5vw, 3.2rem) / 1 "Manrope", sans-serif;
+  letter-spacing: -0.05em;
+  margin: 10px 0 6px;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.kpi-value small {
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: #777;
+}
+
+.kpi-value.text-accent {
+  color: #ff5c35;
+}
+
+.kpi-desc {
+  margin: 0;
+  font-size: 12px;
+  color: #555;
+}
+
+/* ==============================================================================
+   Interactive Tab Navigation (Q1)
+   ============================================================================== */
+.report-tab-nav {
+  max-width: 1440px;
+  margin: 1.5vh auto 3.5vh;
+  padding: 0 4vw;
+}
+
+.tab-container {
+  display: inline-flex;
+  background: #dbd6c7;
+  padding: 5px;
+  border-radius: 9999px;
+  gap: 5px;
+  border: 1px solid rgba(17, 17, 17, 0.1);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 20px;
+  border-radius: 9999px;
+  border: none;
+  background: transparent;
+  color: #444;
+  font: 600 13px "Manrope", sans-serif;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.tab-btn:hover {
+  color: #111;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.tab-btn.active {
+  background: #111111;
+  color: #f4f2eb;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+.tab-btn .tab-icon {
+  font-size: 14px;
+}
+
+.tab-content.fade-in {
+  animation: tabFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes tabFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==============================================================================
+   Executive Insights Callout (Q3)
+   ============================================================================== */
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.insight-card {
+  background: #f7f5ef;
+  border: 1px solid rgba(17, 17, 17, 0.08);
+  border-radius: 10px;
+  padding: 22px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.insight-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.insight-badge {
+  display: inline-block;
+  padding: 3px 9px;
+  border-radius: 9999px;
+  background: rgba(255, 92, 53, 0.12);
+  color: #ff5c35;
+  font: 600 11px "Manrope", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.insight-score {
+  font: 700 15px "Manrope", sans-serif;
+  color: #111;
+}
+
+.insight-card h3 {
+  font: 600 16px/1.35 "Manrope", sans-serif;
+  margin: 0 0 8px;
+  color: #111;
+}
+
+.insight-card p {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #555;
+  margin: 0;
+}
+
+/* ==============================================================================
+   Rating Distribution Card (Q2)
+   ============================================================================== */
+.dist-card {
+  background: #f7f5ef;
+  border: 1px solid rgba(17, 17, 17, 0.08);
+  border-radius: 10px;
+  padding: 24px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  margin-top: 1.25rem;
+}
+
+.dist-bar-stacked {
+  height: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  background: #e0dcd1;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+.dist-segment {
+  height: 100%;
+  transition: width 0.6s ease;
+}
+
+.dist-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 18px;
+}
+
+.dist-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.legend-label {
+  color: #555;
+}
+
+.legend-value {
+  color: #111;
+  font-weight: 700;
+}
+
+.legend-count {
+  color: #888;
+  font-size: 11.5px;
+}
+
+/* ==============================================================================
+   Comparative Benchmark Charts (Q2 - Comparison Tab)
+   ============================================================================== */
+.comparison-chart-card {
+  background: #f7f5ef;
+  border: 1px solid rgba(17, 17, 17, 0.08);
+  border-radius: 10px;
+  padding: 24px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  margin-top: 1.25rem;
+}
+
+.comparison-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.compare-item {
+  background: #f4f2eb;
+  border: 1px solid rgba(17, 17, 17, 0.08);
+  border-radius: 10px;
+  padding: 20px 24px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.compare-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+}
+
+.compare-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-bottom: 14px;
+}
+
+.compare-speaker-info {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 1;
+  min-width: 0;
+}
+
+.compare-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  flex-shrink: 0;
+}
+
+.compare-text-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.compare-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 4px;
+}
+
+.compare-name {
+  font: 600 15.5px "Manrope", sans-serif;
+  color: #111111;
+  line-height: 1.3;
+}
+
+.compare-speaker-tag {
+  display: inline-block;
+  padding: 2px 8px;
+  background: rgba(255, 92, 53, 0.12);
+  color: #ff5c35;
+  font: 600 10.5px "Manrope", sans-serif;
+  border-radius: 9999px;
+  letter-spacing: 0.04em;
+}
+
+.compare-project {
+  margin: 0;
+  font-size: 13px;
+  color: #555555;
+  line-height: 1.45;
+  word-break: break-word;
+}
+
+.compare-score-box {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.compare-score-value {
+  font: 700 20px/1 "Manrope", sans-serif;
+  color: #111111;
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: 3px;
+}
+
+.compare-score-value small {
+  font-size: 11.5px;
+  font-weight: 500;
+  color: #777777;
+}
+
+.compare-score-pct {
+  display: block;
+  font-size: 11px;
+  color: #ff5c35;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.compare-bar-track {
+  height: 10px;
+  background: #ded9cd;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.compare-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #111111 0%, #ff5c35 100%);
+  border-radius: 5px;
+  transition: width 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Criteria Comparison Matrix Table */
+.matrix-card {
+  background: #f7f5ef;
+  border: 1px solid rgba(17, 17, 17, 0.08);
+  border-radius: 10px;
+  padding: 24px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  margin-top: 1.75rem;
+}
+
+.matrix-card h3 {
+  font: 600 17px "Manrope", sans-serif;
+  margin: 0 0 1rem;
+  color: #111;
+}
+
+.matrix-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.matrix-table {
+  width: 100%;
+  min-width: 620px;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 13px;
+}
+
+.matrix-table th {
+  padding: 10px 12px;
+  background: #e9e4d7;
+  font: 600 11.5px "Manrope", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #444;
+  border-bottom: 2px solid rgba(17, 17, 17, 0.1);
+  white-space: nowrap;
+}
+
+.matrix-table td {
+  padding: 12px;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.06);
+  color: #333;
+}
+
+.matrix-table tr:hover {
+  background: rgba(255, 92, 53, 0.04);
+}
+
+.speaker-cell strong {
+  display: block;
+  font: 600 13px "Manrope", sans-serif;
+  color: #111;
+  white-space: nowrap;
+}
+
+.speaker-cell small {
+  color: #777;
+}
+
+.score-cell {
+  font-variant-numeric: tabular-nums;
+  color: #444;
+}
+
+.total-cell strong {
+  font: 700 14px "Manrope", sans-serif;
+  color: #ff5c35;
+}
+
+/* ==============================================================================
+   Speaker Filter Bar (Speakers Tab)
+   ============================================================================== */
+.speaker-filter-bar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 1.25rem 0 1.75rem;
+}
+
+.filter-chip {
+  padding: 7px 16px;
+  border-radius: 9999px;
+  border: 1px solid rgba(17, 17, 17, 0.12);
+  background: #f4f2eb;
+  color: #444;
+  font: 600 12px "Manrope", sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.filter-chip:hover {
+  background: #111111;
+  color: #f4f2eb;
+  border-color: #111111;
+}
+
+.filter-chip.active {
+  background: #111111;
+  color: #f4f2eb;
+  border-color: #111111;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* ==============================================================================
+   Report Section General Styles
+   ============================================================================== */
+.report-section {
+  max-width: 1440px;
+  margin: 0 auto 5vh;
+  padding: 0 4vw;
+}
+
+.section-header {
+  margin-bottom: 24px;
+}
+
+.section-category {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #888;
+  margin: 0 0 8px;
+}
+
+.section-header h2 {
+  margin: 0 0 8px;
+  font: 600 clamp(1.6rem, 3.2vw, 2.5rem) / 1.15 "Manrope", sans-serif;
+  letter-spacing: -0.035em;
+}
+
+.section-lead {
+  margin: 0;
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* Questions Rating List */
+.questions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.question-item {
+  background: #f4f2eb;
+  padding: 20px 22px;
+  border-radius: 8px;
+  border: 1px solid rgba(17, 17, 17, 0.08);
+}
+
+.question-info {
+  display: grid;
+  grid-template-columns: 32px 1fr auto;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 12px;
+}
+
+.question-index {
+  font: 600 16px "Manrope", sans-serif;
+  color: #888;
+}
+
+.question-text h3 {
+  margin: 0 0 4px;
+  font: 600 14.5px/1.4 "Manrope", sans-serif;
+  color: #111;
+}
+
+.rating-count {
+  margin: 0;
+  font-size: 11.5px;
+  color: #666;
+}
+
+.question-score {
+  text-align: right;
+  font: 700 18px "Manrope", sans-serif;
+  color: #111;
+  white-space: nowrap;
+}
+
+.question-score span {
+  font-size: 11px;
+  font-weight: 400;
+  color: #888;
+  margin-left: 2px;
+}
+
+.progress-track {
+  height: 7px;
+  background: #ded9cd;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #111111;
+  border-radius: 4px;
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Speaker Evaluation Cards (1 Speaker Per Row) */
+.speakers-eval-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+}
+
+.speaker-eval-card {
+  background: #f4f2eb;
+  border-radius: 12px;
+  padding: 28px 32px;
+  border: 1px solid rgba(17, 17, 17, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.speaker-eval-card:hover {
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.07);
+}
+
+.speaker-card-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+}
+
+.speaker-avatar {
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  flex-shrink: 0;
+}
+
+.speaker-title-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.speaker-idx {
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #ff5c35;
+  font-weight: 600;
+}
+
+.speaker-title-info h3 {
+  margin: 2px 0 4px;
+  font: 600 clamp(15.5px, 2vw, 17.5px) "Manrope", sans-serif;
+  color: #111;
+  white-space: normal;
+  word-break: break-word;
+  line-height: 1.35;
+}
+
+.project-title {
+  margin: 0;
+  font-size: 12.5px;
+  color: #555;
+  line-height: 1.45;
+  word-break: break-word;
+}
+
+.speaker-mean-badge {
+  text-align: right;
+  padding: 8px 12px;
+  background: #111111;
+  color: #f4f2eb;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.speaker-mean-badge strong {
+  font: 700 17px "Manrope", sans-serif;
+  display: block;
+  line-height: 1;
+}
+
+.speaker-mean-badge small {
+  font-size: 10px;
+  opacity: 0.7;
+}
+
+.speaker-criteria-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.criteria-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.04);
+}
+
+.criteria-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.criteria-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.criteria-name {
+  font-size: 12.5px;
+  color: #333;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.criteria-score {
+  font: 700 13px "Manrope", sans-serif;
+  color: #111;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.criteria-score small {
+  font-size: 10.5px;
+  font-weight: 500;
+  color: #777;
+  margin-left: 2px;
+}
+
+.criteria-bar-wrap {
+  height: 6px;
+  background: #ded9cd;
+  border-radius: 3px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.criteria-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #111111 0%, #ff5c35 100%);
+  border-radius: 3px;
+  transition: width 0.5s ease;
+}
+
+/* ==============================================================================
+   Comprehensive Responsive Breakpoints
+   ============================================================================== */
+
+/* 1. Large Tablets & Small Laptops (<= 1200px) */
+@media (max-width: 1200px) {
+  .report-cover {
+    display: none;
+  }
+}
+
+/* 2. Tablets (<= 1024px) */
+@media (max-width: 1024px) {
+  .kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .insights-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .insights-grid .insight-card:last-child {
+    grid-column: 1 / -1;
+  }
+  .speaker-eval-card {
+    padding: 24px;
+  }
+}
+
+/* 3. Small Tablets & Large Phones (<= 768px) */
+@media (max-width: 768px) {
+  .report-hero {
+    min-height: auto;
+    padding: 30px 5vw 25px;
+  }
+  .report-hero h1 {
+    font-size: clamp(2.2rem, 9vw, 3.8rem);
+  }
+  .report-hero h1 span:nth-child(2) {
+    margin-left: 0;
+  }
+  .report-tab-nav {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 0 5vw;
+  }
+  .report-tab-nav::-webkit-scrollbar {
+    display: none;
+  }
+  .tab-container {
+    display: flex;
+    width: max-content;
+    white-space: nowrap;
+    padding: 4px;
+    gap: 4px;
+  }
+  .tab-btn {
+    padding: 8px 15px;
+    font-size: 12px;
+  }
+  .speaker-filter-bar {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 6px;
+  }
+  .speaker-filter-bar::-webkit-scrollbar {
+    display: none;
+  }
+  .compare-item {
+    padding: 18px 20px;
+  }
+  .compare-header {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .compare-score-box {
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding-top: 10px;
+    border-top: 1px dashed rgba(17, 17, 17, 0.08);
+  }
+  .compare-score-pct {
+    margin-top: 0;
+  }
+  .question-info {
+    grid-template-columns: 1fr auto;
+  }
+  .question-index {
+    display: none;
+  }
+  .criteria-name {
+    font-size: 12px;
+  }
+  .criteria-score {
+    font-size: 12px;
+  }
+}
+
+/* 4. Phones (<= 640px) */
+@media (max-width: 640px) {
+  .kpi-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .kpi-card {
+    min-height: auto;
+    padding: 20px;
+  }
+  .insights-grid {
+    grid-template-columns: 1fr;
+  }
+  .insights-grid .insight-card:last-child {
+    grid-column: auto;
+  }
+  .dist-legend {
+    gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 5. Small Phones (<= 480px) */
+@media (max-width: 480px) {
+  .report-top-bar,
+  .report-bottom-bar {
+    padding-left: 5vw;
+    padding-right: 5vw;
+  }
+  .report-back-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 11px 18px;
+    font-size: 12px;
+  }
+  .dist-legend {
+    grid-template-columns: 1fr;
+  }
+  .speaker-card-header {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .speaker-eval-card {
+    padding: 16px 14px;
+  }
+  .speaker-avatar {
+    width: 48px;
+    height: 48px;
+  }
+  .speaker-title-info h3 {
+    font-size: 15px;
+  }
+  .speaker-mean-badge {
+    margin-left: auto;
+    padding: 6px 10px;
+  }
+  .speaker-mean-badge strong {
+    font-size: 15px;
+  }
+  .criteria-name {
+    font-size: 11.5px;
+  }
+  .criteria-score {
+    font-size: 11.5px;
+  }
+}

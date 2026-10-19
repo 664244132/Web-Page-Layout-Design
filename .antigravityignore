@@ -1,0 +1,62 @@
+# ==============================================================================
+# AI Agent Ignore File (.antigravityignore)
+# กำหนดไฟล์และโฟลเดอร์ที่ AI Agent ไม่จำเป็นต้องอ่าน เพื่อประหยัด Token และเพิ่มประสิทธิภาพ
+# ==============================================================================
+
+# 1. โฟลเดอร์การติดตั้ง Dependencies และ Bundle Output
+node_modules/
+dist/
+build/
+out/
+.cache/
+.temp/
+*.tmp*
+
+# 2. ระบบควบคุมเวอร์ชันและคอนฟิกเครื่องมือภายนอก (Agent & IDE configs)
+.git/
+.figma/
+.vscode/
+.idea/
+.claude/
+agent/
+.plugins/
+.opencode-skills/
+
+# 3. ไฟล์บันทึกการทำงานและดีบัก (Logs)
+*.log
+*-debug.log*
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# 4. ไฟล์ล็อกแพ็กเกจขนาดใหญ่ (Lockfiles)
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+skills-lock.json
+
+# 5. ไฟล์คอนฟิกสภาพแวดล้อมและความลับ (Environment Secrets)
+.env
+.env.local
+.env.*.local
+.env*
+
+# 6. ไฟล์ขยะประจำระบบปฏิบัติการ (OS-generated files)
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 7. ไฟล์ทรัพยากรประเภท Binary (รูปภาพและฟอนต์ - ประหยัด Token เนื่องจากเป็น Binary)
+public/fonts/
+public/images/
+*.woff2
+*.woff
+*.ttf
+*.otf
+*.eot
+*.jpg
+*.jpeg
+*.png
+*.webp
+*.gif
+*.ico
