@@ -262,7 +262,7 @@ export default function App() {
           <span /> UX/UI 101 Seminar
         </div>
         <h1>
-          ยินดีต้อนรับ<span>.</span>
+          UX/UI 101<span>.</span>
         </h1>
         <p>
           Think Like a User, Design Like a Pro —
