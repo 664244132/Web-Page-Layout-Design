@@ -1,0 +1,10 @@
+{
+  "description": "Showcases guest speakers with interactive bios, highlights key content with vivid visuals, and provides easy access to detailed analytics and reports.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
